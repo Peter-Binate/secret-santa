@@ -11,13 +11,6 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocs = require("./Doc/swaggerConfig");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Définition de la première route pour la racine de l'application
-app.get("/", (req, res) => {
-  res.send("Hello world"); // Envoie la réponse "Hello world" au client
-  res.status(200); // Définit le code de statut HTTP 200 (OK) - Inutile ici car `send` le fait automatiquement
-  //res.end("Home");  // Terminer la réponse - Ne sera pas exécuté en raison de `send`
-});
-
 // On se connecte à la base de donnée
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/secret-santa"); // Avec une installation local de mongodb
