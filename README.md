@@ -1,5 +1,3 @@
-Bonjour, c'est Bing. Je peux vous aider à rédiger un fichier README.md pour votre projet de secret-santa avec node.js, express et mongoDB. Voici un exemple de contenu que vous pouvez utiliser:
-
 # Secret-Santa
 
 Ce projet est une application web qui permet de réaliser un secret-santa entre des utilisateurs qui appartiennent à des groupes. Un secret-santa est un jeu où chaque participant doit offrir un cadeau à une personne tirée au sort parmi les membres du groupe, sans que cette personne ne connaisse son identité. Chaque groupe possède un budget à respecter pour les cadeaux.
