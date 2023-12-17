@@ -60,7 +60,7 @@ router.get(
 
 /**
  * @openapi
- * /groups/{id_group}:
+ * /groups/{id_group}/edit:
  *   put:
  *     summary: Met à jour un groupe
  *     description: Permet à un utilisateur authentifié et administrateur d'un groupe de modifier les informations du groupe
@@ -94,14 +94,14 @@ router.get(
  *      - Groups
  */
 router.put(
-  "/:id_group",
+  "/:id_group/edit",
   jwtMiddleWare.verifyToken,
   groupController.updateGroup
 );
 
 /**
  * @openapi
- * /groups/{id_group}:
+ * /groups/{id_group}/delete:
  *   delete:
  *     summary: Supprime un groupe
  *     description: Permet à un utilisateur authentifié et administrateur d'un groupe de supprimer le groupe
@@ -125,7 +125,7 @@ router.put(
  *      - Groups
  */
 router.delete(
-  "/:id_group",
+  "/:id_group/delete",
   jwtMiddleWare.verifyToken,
   groupController.deleteGroup
 );

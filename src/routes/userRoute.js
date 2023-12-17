@@ -70,7 +70,7 @@ router.route("/login").post(userController.userLogin);
 
 /**
  * @openapi
- * /users/{id_user}:
+ * /users/{id_user}/edit:
  *   put:
  *     summary: Met à jour un utilisateur
  *     description: Permet à un utilisateur authentifié de modifier ses informations
@@ -108,11 +108,15 @@ router.route("/login").post(userController.userLogin);
  *      - Users
  */
 //Update user
-router.put("/:id_user", jwtMiddleWare.verifyToken, userController.updateAUser);
+router.put(
+  "/:id_user/edit",
+  jwtMiddleWare.verifyToken,
+  userController.updateAUser
+);
 
 /**
  * @openapi
- * /users/{id_user}:
+ * /users/{id_user}/delete:
  *   delete:
  *     summary: Supprime un utilisateur
  *     description: Permet à un utilisateur authentifié de supprimer son compte
@@ -135,7 +139,7 @@ router.put("/:id_user", jwtMiddleWare.verifyToken, userController.updateAUser);
  */
 //Delete User
 router.delete(
-  "/:id_user",
+  "/:id_user/delete",
   jwtMiddleWare.verifyToken,
   userController.deleteAUser
 );
