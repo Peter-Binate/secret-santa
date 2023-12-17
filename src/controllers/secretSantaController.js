@@ -58,7 +58,8 @@ exports.secretSanta = async (req, res) => {
       await Santa.create(pairs);
       // On renvoie un message de succès avec les paires créées
       res.status(201).json({
-        message: "Le secret santa a été réalisé avec succès",
+        message:
+          "Le secret santa a été réalisé avec succès! Voici la liste secret-santa pour ce groupe:",
         pairs: pairs,
       });
     }
@@ -66,6 +67,59 @@ exports.secretSanta = async (req, res) => {
     // On gère les erreurs éventuelles
     res.status(500).json({
       message: "Une erreur s'est produite lors du secret santa",
+      error: error.message,
+    });
+  }
+};
+
+// On crée la méthode displayUserGifter
+exports.displayUserGifter = async (req, res) => {
+  try {
+    // On récupère l'id du groupe et de l'utilisateur
+    const group_id = req.params.group_id;
+    const user_id = req.params.user_id;
+    // On cherche le couple secret santa qui correspond à l'utilisateur receveur
+    const pair = await Santa.findOne({
+      group_id: group_id,
+      user_recipient: user_id,
+    });
+    // On renvoie un message de succès avec l'id de l'utilisateur donneur
+    res.status(200).json({
+      message:
+        "Voici l'id de votre partenaire secret qui doit vous offrir un cadeau",
+      user_gifter: pair.user_gifter,
+    });
+  } catch (error) {
+    // On gère les erreurs éventuelles
+    res.status(500).json({
+      message:
+        "Une erreur s'est produite lors de l'affichage de votre partenaire secret",
+      error: error.message,
+    });
+  }
+};
+
+// On crée la méthode displayUserRecipient
+exports.displayUserRecipient = async (req, res) => {
+  try {
+    // On récupère l'id du groupe et de l'utilisateur
+    const group_id = req.params.group_id;
+    const user_id = req.params.user_id;
+    // On cherche le couple secret santa qui correspond à l'utilisateur donneur
+    const pair = await Santa.findOne({
+      group_id: group_id,
+      user_gifter: user_id,
+    });
+    // On renvoie un message de succès avec l'id de l'utilisateur receveur
+    res.status(200).json({
+      message: "Voici l'id de la personne à qui vous devez offrir un cadeau",
+      user_recipient: pair.user_recipient,
+    });
+  } catch (error) {
+    // On gère les erreurs éventuelles
+    res.status(500).json({
+      message:
+        "Une erreur s'est produite lors de l'affichage de la personne à qui vous devez offrir un cadeau",
       error: error.message,
     });
   }
