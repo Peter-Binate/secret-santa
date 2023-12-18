@@ -67,7 +67,7 @@ Ensuite, vous pouvez suivre les étapes suivantes:
 - Installer les dépendances du projet, en utilisant la commande `npm install`.
 - Lancer le serveur de développement, en utilisant la commande `npm run start`.
 - Tester l'API avec un outil comme Postman ou Curl, en utilisant les routes définies dans le dossier routes.
-- Consulter la documentation de l'API, en accédant à l'URL http://localhost:3000/api-docs (ou le port que vous avez spécifié dans le fichier .env).
+- Consulter la documentation de l'API, en accédant à l'URL http://localhost:3000/api-docs (en local) https://secret-santa-peter-71501d2e013f.herokuapp.com/api-docs/ (en ligne) (ou le port que vous avez spécifié dans le fichier .env).
 
 ## Auteur
 
